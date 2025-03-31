@@ -1,0 +1,4 @@
+python-telegram-bot==20.4
+stripe==5.4.0
+python-dotenv==1.0.0
+reportlab==3.6.12
