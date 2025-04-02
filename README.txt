@@ -1,206 +1,228 @@
-# ИНСТРУКЦИЯ ПО УСТАНОВКЕ И ЗАПУСКУ TELEGRAM-БОТА ДЛЯ ПЛАТЕЖЕЙ
+💰 Telegram Bot for Payment Processing with Stripe
 
-## УСТАНОВКА НА WINDOWS
+Accept payments through Telegram? Now it's easy! 💳
+Want to automate payments for products or services? With this bot, clients can pay directly in chat!
 
-### Шаг 1: Установка Python 3.9
-1. Скачайте Python 3.9 с официального сайта: https://www.python.org/downloads/release/python-3913/
-   - Прокрутите вниз до раздела "Files" и выберите "Windows installer (64-bit)"
-   - **ВАЖНО:** Во время установки поставьте галочку "Add Python 3.9 to PATH"
+✅ How does it work?
 
-2. Проверьте установку Python. Откройте командную строку (нажмите Win+R, введите "cmd" и нажмите Enter), затем введите:
-   ```
-   python --version
-   ```
-   Вы должны увидеть что-то вроде "Python 3.9.13"
+• 🛍️ The client selects a product
+• 💳 Pays via Stripe
+• ✅ Receives a payment confirmation
+• 📊 You track orders in real time
 
-### Шаг 2: Скачивание проекта
-1. Создайте новую папку для бота, например, C:\telegram-payment-bot
-2. Скопируйте все файлы проекта в эту папку:
-   - main.py
-   - database.py
-   - payments.py
-   - receipts.py
+🔧 Features
 
-### Шаг 3: Создание виртуального окружения
-1. Откройте командную строку и перейдите в папку с проектом:
-   ```
-   cd C:\telegram-payment-bot
-   ```
+✅ Stripe API support
+✅ Receipt generation and sending to the client
+✅ Secure data storage via .env
 
-2. Создайте виртуальное окружение:
-   ```
-   python -m venv venv
-   ```
+📩 Want a bot like this?
 
-3. Активируйте виртуальное окружение:
-   ```
-   venv\Scripts\activate
-   ```
-   После активации в начале строки появится (venv)
+Message me on Telegram, and I'll help you automate your payments! 🚀
 
-### Шаг 4: Установка зависимостей
-Введите следующую команду для установки всех необходимых библиотек:
+# INSTRUCTIONS FOR INSTALLING AND LAUNCHING THE TELEGRAM BOT FOR PAYMENTS
+
+## INSTALLING ON WINDOWS
+
+### Step 1: Installing Python 3.9
+1. Download Python 3.9 from the official website: https://www.python.org/downloads/release/python-3913/
+- Scroll down to the "Files" section and select "Windows installer (64-bit)"
+- **IMPORTANT:** During installation, check the "Add Python 3.9 to PATH" box
+
+2. Check the Python installation. Open a command prompt (press Win+R, type "cmd" and press Enter), then type:
+```
+python --version
+```
+You should see something like "Python 3.9.13"
+
+### Step 2: Downloading the project
+1. Create a new folder for the bot, for example, C:\telegram-payment-bot
+2. Copy all the project files to this folder:
+- main.py
+- database.py
+- payments.py
+- receipts.py
+
+### Step 3: Creating a virtual environment
+1. Open a command prompt and go to the project folder:
+```
+cd C:\telegram-payment-bot
+```
+
+2. Create a virtual environment:
+```
+python -m venv venv
+```
+
+3. Activate the virtual environment:
+```
+venv\Scripts\activate
+```
+After activation, at the beginning of the line will appear (venv)
+
+### Step 4: Installing Dependencies
+Enter the following command to install all the required libraries:
 ```
 pip install python-telegram-bot==20.4 stripe==5.4.0 python-dotenv==1.0.0 reportlab==3.6.12
 ```
 
-### Шаг 5: Настройка API ключей
-1. Создайте файл .env в папке проекта (C:\telegram-payment-bot\.env)
-2. Откройте файл в Блокноте и добавьте следующие строки:
-   ```
-   TELEGRAM_TOKEN=ваш_токен_телеграм_бота
-   STRIPE_API_KEY=ваш_ключ_api_stripe
-   ```
+### Step 5: Setting up API Keys
+1. Create a .env file in the project folder (C:\telegram-payment-bot\.env)
+2. Open the file in Notepad and add the following lines:
+```
+TELEGRAM_TOKEN=your_telegram_bot_token
+STRIPE_API_KEY=your_stripe_api_key
+```
 
-3. Чтобы получить TELEGRAM_TOKEN:
-   - Найдите бота @BotFather в Telegram
-   - Отправьте ему команду /newbot
-   - Следуйте инструкциям для создания нового бота
-   - Скопируйте полученный токен в файл .env
+3. To get the TELEGRAM_TOKEN:
+- Find the @BotFather bot in Telegram
+- Send it the /newbot command
+- Follow the instructions to create a new bot
+- Copy the received token to the .env file
 
-4. Чтобы получить STRIPE_API_KEY:
-   - Зарегистрируйтесь на сайте Stripe (https://stripe.com)
-   - В панели управления найдите раздел "Developers" и затем "API keys"
-   - Скопируйте "Secret key" (начинается с sk_test_ для тестового режима)
-   - Вставьте ключ в файл .env
+4. To get the STRIPE_API_KEY:
+- Register on the Stripe website (https://stripe.com)
+- In the control panel, find the "Developers" section and then "API keys"
+- Copy the "Secret key" (starts with sk_test_ for test mode)
+- Paste the key into the .env file
 
-### Шаг 6: Запуск бота
-1. Убедитесь, что виртуальное окружение активировано (в начале строки должно быть (venv))
-2. Введите команду:
-   ```
-   python main.py
-   ```
-3. Вы увидите сообщение "Бот запущен. Нажмите Ctrl+C для остановки."
-4. Теперь бот работает и готов обрабатывать команды в Telegram
+### Step 6: Launch the bot
+1. Make sure the virtual environment is activated (there should be (venv) at the beginning of the line)
+2. Enter the command:
+```
+python main.py
+```
+3. You will see the message "Bot launched. Press Ctrl+C to stop."
+4. Now the bot is running and ready to process commands in Telegram
 
-## УСТАНОВКА НА LINUX (Ubuntu/Debian)
+## INSTALLATION ON LINUX (Ubuntu/Debian)
 
-### Шаг 1: Установка Python 3.9
-1. Откройте терминал (Ctrl+Alt+T)
-2. Выполните следующие команды:
-   ```
-   sudo apt update
-   sudo apt install software-properties-common
-   sudo add-apt-repository ppa:deadsnakes/ppa
-   sudo apt update
-   sudo apt install python3.9 python3.9-venv python3.9-dev
-   ```
+### Step 1: Install Python 3.9
+1. Open terminal (Ctrl+Alt+T)
+2. Run the following commands:
+```
+sudo apt update
+sudo apt install software-properties-common
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt update
+sudo apt install python3.9 python3.9-venv python3.9-dev
+```
 
-3. Проверьте установку:
-   ```
-   python3.9 --version
-   ```
+3. Check the installation:
+```
+python3.9 --version
+```
 
-### Шаг 2: Скачивание проекта
-1. Создайте папку для проекта:
-   ```
-   mkdir ~/telegram-payment-bot
-   cd ~/telegram-payment-bot
-   ```
+### Step 2: Download the project
+1. Create a folder for the project:
+```
+mkdir ~/telegram-payment-bot
+cd ~/telegram-payment-bot
+```
 
-2. Скопируйте все файлы проекта в эту папку:
-   - main.py
-   - database.py
-   - payments.py
-   - receipts.py
+2. Copy all project files to this folder:
+- main.py
+- database.py
+- payments.py
+- receipts.py
 
-### Шаг 3: Создание виртуального окружения
-1. Перейдите в папку с проектом (если вы еще не там):
-   ```
-   cd ~/telegram-payment-bot
-   ```
+### Step 3: Create a virtual environment
+1. Go to the project folder (if you are not there already):
+```
+cd ~/telegram-payment-bot
+```
 
-2. Создайте виртуальное окружение:
-   ```
-   python3.9 -m venv venv
-   ```
+2. Create a virtual environment:
+```
+python3.9 -m venv venv
+```
 
-3. Активируйте его:
-   ```
-   source venv/bin/activate
-   ```
-   После активации в начале строки появится (venv)
+3. Activate it:
+```
+source venv/bin/activate
+```
+After activation, (venv) will appear at the beginning of the line
 
-### Шаг 4: Установка зависимостей
-Введите следующую команду:
+### Step 4: Install dependencies
+Enter the following command:
 ```
 pip install python-telegram-bot==20.4 stripe==5.4.0 python-dotenv==1.0.0 reportlab==3.6.12
 ```
 
-### Шаг 5: Настройка API ключей
-1. Создайте файл .env:
-   ```
-   nano .env
-   ```
+### Step 5: Configure the API keys
+1. Create a .env file:
+```
+nano .env
+```
 
-2. Добавьте следующие строки:
-   ```
-   TELEGRAM_TOKEN=ваш_токен_телеграм_бота
-   STRIPE_API_KEY=ваш_ключ_api_stripe
-   ```
+2. Add the following lines:
+```
+TELEGRAM_TOKEN=your_telegram_bot_token
+STRIPE_API_KEY=your_stripe_api_key
+```
 
-3. Сохраните файл: нажмите Ctrl+O, затем Enter, затем Ctrl+X
+3. Save the file: press Ctrl+O, then Enter, then Ctrl+X
 
-4. Получение TELEGRAM_TOKEN:
-   - Найдите бота @BotFather в Telegram
-   - Отправьте ему команду /newbot
-   - Следуйте инструкциям для создания нового бота
-   - Скопируйте полученный токен в файл .env
+4. Get the TELEGRAM_TOKEN:
+- Find the @BotFather bot in Telegram
+- Send it the /newbot command
+- Follow the instructions to create a new bot
+- Copy the received token to the .env file
 
-5. Получение STRIPE_API_KEY:
-   - Зарегистрируйтесь на сайте Stripe (https://stripe.com)
-   - В панели управления найдите раздел "Developers" и затем "API keys"
-   - Скопируйте "Secret key" (начинается с sk_test_ для тестового режима)
-   - Вставьте ключ в файл .env
+5. Get the STRIPE_API_KEY:
+- Register on the Stripe website (https://stripe.com)
+- In the control panel, find the "Developers" section and then "API keys"
+- Copy the "Secret key" (starts with sk_test_ for test mode)
+- Paste the key into the .env file
 
-### Шаг 6: Запуск бота
-1. Убедитесь, что виртуальное окружение активировано (в начале строки должно быть (venv))
-2. Введите команду:
-   ```
-   python main.py
-   ```
-3. Вы увидите сообщение "Бот запущен. Нажмите Ctrl+C для остановки."
-4. Теперь бот работает и готов обрабатывать команды в Telegram
+### Step 6: Starting the bot
+1. Make sure the virtual environment is activated (there should be (venv) at the beginning of the line)
+2. Enter the command:
+```
+python main.py
+```
+3. You will see the message "Bot started. Press Ctrl+C to stop."
+4. The bot is now running and ready to process commands in Telegram
 
-## ИСПОЛЬЗОВАНИЕ БОТА
+## USING THE BOT
 
-1. Найдите своего бота в Telegram (по имени, которое вы указали при создании)
-2. Отправьте команду `/start`, чтобы начать работу с ботом
-3. Используйте команду `/pay`, чтобы создать новый платеж:
-   - Введите сумму платежа
-   - Введите описание платежа
-   - Бот создаст платеж и отправит вам ссылку для оплаты
-4. Используйте команду `/payments`, чтобы просмотреть историю платежей
+1. Find your bot in Telegram (by the name you specified when creating it)
+2. Send the command `/start` to start working with the bot
+3. Use the command `/pay` to create a new payment:
+- Enter the payment amount
+- Enter the payment description
+- The bot will create the payment and send you a link for payment
+4. Use the command `/payments` to view the payment history
 
-## ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ
+## ADDITIONAL INFORMATION
 
-1. Если вы хотите, чтобы бот работал постоянно на сервере, изучите способы запуска скриптов в фоновом режиме (например, с использованием systemd на Linux или службы Windows на Windows).
+1. If you want the bot to run permanently on the server, look into ways to run scripts in the background (e.g. using systemd on Linux or a Windows service on Windows).
 
-2. Бот сохраняет все данные о платежах в файл базы данных SQLite (payments.db), который создается в папке проекта.
+2. The bot saves all payment data to a SQLite database file (payments.db), which is created in the project folder.
 
-3. Если вы хотите использовать бота в производственной среде, не забудьте заменить тестовый API ключ Stripe на боевой (начинается с sk_live_).
+3. If you want to use the bot in a production environment, don't forget to replace the Stripe test API key with a live one (starts with sk_live_).
 
-## УСТРАНЕНИЕ ПРОБЛЕМ
+## TROUBLESHOOTING
 
-1. Если Python не найден в командной строке Windows:
-   - Убедитесь, что вы поставили галочку "Add Python 3.9 to PATH" при установке
-   - Перезапустите командную строку
+1. If Python is not found in the Windows command line:
+- Make sure you checked "Add Python 3.9 to PATH" during installation
+- Restart the command line
 
-2. Если возникают ошибки при установке зависимостей:
-   - Убедитесь, что вы используете Python 3.9
-   - Попробуйте обновить pip: `python -m pip install --upgrade pip`
+2. If you get errors installing dependencies:
+- Make sure you are using Python 3.9
+- Try updating pip: `python -m pip install --upgrade pip`
 
-3. Если бот не запускается из-за ошибки с API ключами:
-   - Проверьте, что файл .env находится в той же папке, что и main.py
-   - Убедитесь, что в файле нет опечаток и лишних пробелов
+3. If the bot does not start due to an error with API keys:
+- Check that the .env file is in the same folder as main.py
+- Make sure there are no typos or extra spaces in the file
 
-4. Если бот запускается, но не отвечает в Telegram:
-   - Проверьте, что вы правильно ввели токен Telegram
-   - Убедитесь, что бот не был заблокирован пользователем
-   - Попробуйте написать боту первым (/start)
+4. If the bot starts but does not respond in Telegram:
+- Check that you entered the Telegram token correctly
+- Make sure the bot has not been blocked by the user
+- Try writing to the bot first (/start)
 
-5. Если возникают проблемы с платежами:
-   - Проверьте, что API ключ Stripe действителен и активен
-   - Убедитесь, что вы не используете кириллические символы в названии товара
+5. If you have problems with payments:
+- Check that the Stripe API key is valid and active
+- Make sure you don't use Cyrillic characters in the product name
 
-При возникновении других проблем обратитесь к документации Python, python-telegram-bot и Stripe API.
+For other issues, please refer to the Python documentation, python-telegram-bot and Stripe API.
